@@ -6,53 +6,52 @@
             </el-aside>
             <el-container>
                 <el-header>Header</el-header>
-                <el-main>Main</el-main>
+                <el-main>
+                    <router-view></router-view>
+                </el-main>
             </el-container>
         </el-container>
     </div>
 </template>
 
 <script>
-import asidePart from '@/components/container/Aside.vue';
+import asidePart from "@/components/container/Aside.vue";
 
 export default {
-    components:{
+    components: {
         asidePart
     },
-    data(){
-        return {
-
-        }
+    data() {
+        return {};
     }
-}
+};
 </script>
 
 <style lang="less" scoped>
-#pageIndex{
+#pageIndex {
     height: 100%;
     width: 100%;
-    .content{
+    .content {
         height: 100%;
     }
 }
-.el-header{
-    background-color: #B3C0D1;
+.el-header {
+    background-color: #b3c0d1;
     color: #333;
     text-align: center;
     line-height: 60px;
-  }
-  
-  .el-aside {
+}
+
+.el-aside {
     background-color: #304155;
     color: #333;
     text-align: center;
     line-height: 200px;
-  }
-  
-  .el-main {
-    background-color: #E9EEF3;
+}
+
+.el-main {
+    background-color: #e9eef3;
     color: #333;
-    text-align: center;
     line-height: 160px;
-  }
+}
 </style>

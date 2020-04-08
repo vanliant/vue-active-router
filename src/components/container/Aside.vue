@@ -1,61 +1,70 @@
 <template>
     <div>
         <el-menu
-            default-active="2"
+            :default-active="activePath"
             class="el-menu-vertical"
-            @open="handleOpen"
-            @close="handleClose"
-            background-color='#304155'
-            text-color='#fff'
-            :collapse='false'
+            @select="selectPage"
+            background-color="#304155"
+            text-color="#fff"
+            :collapse="false"
         >
-            <el-menu-item index="1">
-                <i class="el-icon-location"></i>
+            <el-menu-item index="/page/index">
+                <i class="el-icon-house"></i>
                 <span slot="title">首页</span>
             </el-menu-item>
 
-            <el-menu-item index="2">
-                <i class="el-icon-menu"></i>
-                <span slot="title">TablePage</span>
-            </el-menu-item>
-            <!-- <el-submenu index="1">
+            <el-submenu index="/page/table">
                 <template slot="title">
-                    <i class="el-icon-location"></i>
-                    <span>首页</span>
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">表格案例</span>
                 </template>
-                <el-menu-item-group>
-                    <template slot="title">分组一</template>
-                    <el-menu-item index="1-1">选项1</el-menu-item>
-                    <el-menu-item index="1-2">选项2</el-menu-item>
-                </el-menu-item-group>
-                <el-menu-item-group title="分组2">
-                    <el-menu-item index="1-3">选项3</el-menu-item>
-                </el-menu-item-group>
-                <el-submenu index="1-4">
-                    <template slot="title">选项4</template>
-                    <el-menu-item index="1-4-1">选项1</el-menu-item>
-                </el-submenu>
-            </el-submenu> -->
-            <!-- <el-menu-item index="2">
-                <i class="el-icon-menu"></i>
-                <span slot="title">导航二</span>
-            </el-menu-item> -->
-            <el-menu-item index="3" >
-                <i class="el-icon-document"></i>
-                <span slot="title">AdminPage</span>
+                <el-menu-item index="/page/table/editTable">
+                    <i class="el-icon-document"></i>
+                    <span slot="title">可编辑表格</span>
+                </el-menu-item>
+                <el-menu-item index="/page/table/flexibleTable">
+                    <i class="el-icon-document"></i>
+                    <span slot="title">自定义列表格</span>
+                </el-menu-item>
+            </el-submenu>
+            
+            <el-menu-item index="/page/admin">
+                <i class="el-icon-user"></i>
+                <span slot="title">权限管理</span>
             </el-menu-item>
-            <el-menu-item index="4">
-                <i class="el-icon-setting"></i>
-                <span slot="title">DragDemo</span>
+
+            <el-submenu index="/page/drag">
+                <template slot="title">
+                    <i class="el-icon-magic-stick"></i>
+                    <span slot="title">拖拽案例</span>
+                </template>
+                <el-menu-item index="/page/drag/single">
+                    <i class="el-icon-magic-stick"></i>
+                    <span slot="title">单组拖拽</span>
+                </el-menu-item>
+                <el-menu-item index="/page/drag/group">
+                    <i class="el-icon-magic-stick"></i>
+                    <span slot="title">多组拖拽</span>
+                </el-menu-item>
+            </el-submenu>
+            <el-menu-item index="/page/tree">
+                <i class="el-icon-folder-opened"></i>
+                <span slot="title">树案例</span>
             </el-menu-item>
-            <el-menu-item index="5">
-                <i class="el-icon-setting"></i>
-                <span slot="title">TreePage</span>
-            </el-menu-item>
-            <el-menu-item index="6">
-                <i class="el-icon-setting"></i>
-                <span slot="title">ErrorPage</span>
-            </el-menu-item>
+            <el-submenu index="/page/error">
+                <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">Error页面</span>
+                </template>
+                <el-menu-item index="/page/error/404">
+                    <i class="el-icon-warning-outline"></i>
+                    <span slot="title">404</span>
+                </el-menu-item>
+                <el-menu-item index="/page/error/500">
+                    <i class="el-icon-warning-outline"></i>
+                    <span slot="title">500</span>
+                </el-menu-item>
+            </el-submenu>
         </el-menu>
     </div>
 </template>
@@ -66,12 +75,19 @@ export default {
         return {};
     },
     methods: {
-        handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      }
+        selectPage(key,keyPath){
+            this.$router.push({
+                path:keyPath[keyPath.length - 1],
+            })
+        }
+    },
+    computed:{
+        activePath:function(){
+            return this.$route.path
+        }
+    },
+    created(){
+
     }
 };
 </script>
