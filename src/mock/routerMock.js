@@ -4,11 +4,11 @@ let routerData = Mock.mock(
     {
         'admin': {
             'routes': [
-                {
-                    path: '/login',
-                    name: 'Login',
-                    component: `() => import('../views/Login.vue')`
-                },
+                // {
+                //     path: '/login',
+                //     name: 'Login',
+                //     component: `() => import('../views/Login.vue')`
+                // },
                 {
                     path: '/page/',
                     name: 'pageIndex',
@@ -142,11 +142,11 @@ let routerData = Mock.mock(
         },
         'user': {
             'routes': [
-                {
-                    path: '/login',
-                    name: 'Login',
-                    component: `() => import('../views/Login.vue')`
-                },
+                // {
+                //     path: '/login',
+                //     name: 'Login',
+                //     component: `() => import('../views/Login.vue')`
+                // },
                 {
                     path: '/page/',
                     name: 'pageIndex',
