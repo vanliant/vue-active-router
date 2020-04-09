@@ -5,7 +5,9 @@
                 <aside-part />
             </el-aside>
             <el-container>
-                <el-header>Header</el-header>
+                <el-header>
+                    {{userName}}
+                </el-header>
                 <el-main>
                     <router-view></router-view>
                 </el-main>
@@ -23,6 +25,11 @@ export default {
     },
     data() {
         return {};
+    },
+    computed:{
+        userName:function(){
+            return this.$store.state.userInfo.name
+        }
     }
 };
 </script>

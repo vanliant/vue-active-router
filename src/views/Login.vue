@@ -55,6 +55,7 @@ export default {
                 name:this.userName,
                 password:this.password
             }
+            sessionStorage.setItem('userInfo',[JSON.stringify(userInfo)])
             this.$store.commit('saveUserInfo',userInfo)
             this.$router.push({
                 path:'/page/index',

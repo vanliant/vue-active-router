@@ -7,64 +7,64 @@ let routerData = Mock.mock(
                 // {
                 //     path: '/login',
                 //     name: 'Login',
-                //     component: `() => import('../views/Login.vue')`
+                //     component: () => import('../views/Login.vue')
                 // },
                 {
                     path: '/page/',
                     name: 'pageIndex',
-                    component: `() => import('../views/index.vue')`,
+                    component: () => import('../views/index.vue'),
                     children: [
                         {
                             path: 'index',
-                            component: `() => import('../views/page/indexPage.vue')`,
+                            component: () => import('../views/page/indexPage.vue'),
                         },
                         {
                             path: 'table/',
-                            component: `() => import('../views/page/TablePage.vue')`,
+                            component: () => import('../views/page/TablePage.vue'),
                             children: [
                                 {
                                     path: 'editTable',
-                                    component: `() => import('../views/page/TablePageEdit.vue')`
+                                    component: () => import('../views/page/TablePageEdit.vue')
                                 },
                                 {
                                     path: 'flexibleTable',
-                                    component: `() => import('../views/page/TablePageFlexible.vue')`
+                                    component: () => import('../views/page/TablePageFlexible.vue')
                                 }
                             ]
                         },
                         {
                             path: 'admin',
-                            component: `() => import('../views/page/AdminPage.vue')`,
+                            component: () => import('../views/page/AdminPage.vue'),
                         },
                         {
                             path: 'drag/',
-                            component: `() => import('../views/page/DragPage.vue')`,
+                            component: () => import('../views/page/DragPage.vue'),
                             children: [
                                 {
                                     path: 'single',
-                                    component: `() => import('../views/page/DragPageSingle.vue')`
+                                    component: () => import('../views/page/DragPageSingle.vue')
                                 },
                                 {
                                     path: 'group',
-                                    component: `() => import('../views/page/DragPageGroup.vue')`
+                                    component: () => import('../views/page/DragPageGroup.vue')
                                 }
                             ]
                         },
                         {
                             path: 'tree',
-                            component: `() => import('../views/page/TreePage.vue')`,
+                            component: () => import('../views/page/TreePage.vue'),
                         },
                         {
                             path: 'error/',
-                            component: `() => import('../views/page/ErrorPage.vue')`,
+                            component: () => import('../views/page/ErrorPage.vue'),
                             children: [
                                 {
                                     path: '404',
-                                    component: `() => import('../views/page/ErrorPage404.vue')`
+                                    component: () => import('../views/page/ErrorPage404.vue')
                                 },
                                 {
                                     path: '500',
-                                    component: `() => import('../views/page/ErrorPage500.vue')`
+                                    component: () => import('../views/page/ErrorPage500.vue')
                                 }
                             ]
                         },
@@ -145,52 +145,52 @@ let routerData = Mock.mock(
                 // {
                 //     path: '/login',
                 //     name: 'Login',
-                //     component: `() => import('../views/Login.vue')`
+                //     component: () => import('../views/Login.vue')
                 // },
                 {
                     path: '/page/',
                     name: 'pageIndex',
-                    component: `() => import('../views/index.vue')`,
+                    component: () => import('../views/index.vue'),
                     children: [
                         {
                             path: 'index',
-                            component: `() => import('../views/page/indexPage.vue')`,
+                            component: () => import('../views/page/indexPage.vue'),
                         },
                         {
                             path: 'table/',
-                            component: `() => import('../views/page/TablePage.vue')`,
+                            component: () => import('../views/page/TablePage.vue'),
                             children: [
                                 {
                                     path: 'editTable',
-                                    component: `() => import('../views/page/TablePageEdit.vue')`
+                                    component: () => import('../views/page/TablePageEdit.vue')
                                 },
                                 {
                                     path: 'flexibleTable',
-                                    component: `() => import('../views/page/TablePageFlexible.vue')`
+                                    component: () => import('../views/page/TablePageFlexible.vue')
                                 }
                             ]
                         },
                         {
                             path: 'admin',
-                            component: `() => import('../views/page/AdminPage.vue')`,
+                            component: () => import('../views/page/AdminPage.vue'),
                         },
                         {
                             path: 'drag/',
-                            component: `() => import('../views/page/DragPage.vue')`,
+                            component: () => import('../views/page/DragPage.vue'),
                             children: [
                                 {
                                     path: 'single',
-                                    component: `() => import('../views/page/DragPageSingle.vue')`
+                                    component: () => import('../views/page/DragPageSingle.vue')
                                 },
                                 {
                                     path: 'group',
-                                    component: `() => import('../views/page/DragPageGroup.vue')`
+                                    component: () => import('../views/page/DragPageGroup.vue')
                                 }
                             ]
                         },
                         {
                             path: 'tree',
-                            component: `() => import('../views/page/TreePage.vue')`,
+                            component: () => import('../views/page/TreePage.vue'),
                         },
                         // {
                         //     path: 'error/',
@@ -281,7 +281,6 @@ let routerData = Mock.mock(
     }
 )
 
-Mock.mock(/goods/, 'post', (res) => {
-    console.log('mock', res)
-    return routerData
+Mock.mock(/routerInfo/, 'post', (res) => {
+    return routerData[res.body]
 })
