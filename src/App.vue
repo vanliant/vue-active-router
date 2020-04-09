@@ -12,9 +12,7 @@ export default {
     }
   },
   created(){
-    this.axios.post('/goods/','aaa').then((data)=>{
-      console.log('dddddd',data)
-    })
+    
   }
 }
 </script>

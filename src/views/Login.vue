@@ -33,7 +33,6 @@ export default {
     },
     methods:{
         submitInfo(){
-            console.log(this.userName == 'admin')
             
             if(this.userName != 'admin' && this.userName != 'user'){
                 this.$message.error('用户名错误')
@@ -51,6 +50,12 @@ export default {
 
         // 路由跳转
         enterPage(){
+            // 存储当前的用户数据到store
+            let userInfo = {
+                name:this.userName,
+                password:this.password
+            }
+            this.$store.commit('saveUserInfo',userInfo)
             this.$router.push({
                 path:'/page/index',
             })

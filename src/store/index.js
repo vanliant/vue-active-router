@@ -5,11 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    userInfo:{}
   },
   mutations: {
+    saveUserInfo(state,data){//存储用户信息
+      state.userInfo = data
+    }
   },
   actions: {
+
   },
   modules: {
+
   }
 })
