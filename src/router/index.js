@@ -80,27 +80,27 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-	console.log(to, from, next)
-	console.log(sessionStorage.getItem('newRouter'))
-	if (to.path.includes('page') && sessionStorage.getItem('newRouter') == 'true') {
-		// 跳转至详情页面
-		let userName = JSON.parse(sessionStorage.getItem('userInfo'))
-		axios.post('/routerInfo/', userName.name).then((res)=>{
-		router.options.routes.push(...res.data.routes);
-		sessionStorage.setItem('newRouter',false)
-		router.addRoutes(res.data.routes);
+	// console.log(to, from, next)
+	// console.log(sessionStorage.getItem('newRouter'))
+	// if (to.path.includes('page') && sessionStorage.getItem('newRouter') == 'true') {
+	// 	// 跳转至详情页面
+	// 	let userName = JSON.parse(sessionStorage.getItem('userInfo'))
+	// 	axios.post('/routerInfo/', userName.name).then((res)=>{
+	// 	router.options.routes.push(...res.data.routes);
+	// 	sessionStorage.setItem('newRouter',false)
+	// 	router.addRoutes(res.data.routes);
 
 
-		console.log('router',router)
-		// next()
-		router
-	})
+	// 	console.log('router',router)
+	// 	// next()
+	// 	router
+	// })
 		
-	} else {
-		sessionStorage.setItem('newRouter',true)
-		console.log('router',router)
-		next()
-	}
+	// } else {
+	// 	sessionStorage.setItem('newRouter',true)
+	// 	console.log('router',router)
+	// 	next()
+	// }
 
 
 })
