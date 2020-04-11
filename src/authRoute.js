@@ -7,7 +7,6 @@ var addRouteFlag = false
 router.beforeEach((to, from, next) => {
     
     let userName = localStorage.getItem("userName")
-    console.log('ddd',userName)
     if (userName && userName != 'unLogin') {
         next()
         if (!addRouteFlag) {
