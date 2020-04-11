@@ -10,6 +10,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import qs from 'qs'
 
+import VueCookies from 'vue-cookies'
+
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -18,6 +20,7 @@ import './assets/less/index.less'
 
 Vue.use(VueAxios,axios);
 Vue.prototype.$qs = qs
+Vue.use(VueCookies)
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
