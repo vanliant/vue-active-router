@@ -28,7 +28,7 @@
                 </el-menu-item>
             </el-submenu>
             
-            <el-menu-item index="/page/admin">
+            <el-menu-item v-if="userName == 'admin'" index="/page/admin">
                 <i class="el-icon-user"></i>
                 <span slot="title">权限管理</span>
             </el-menu-item>
@@ -84,6 +84,9 @@ export default {
     computed:{
         activePath:function(){
             return this.$route.path
+        },
+        userName:function(){
+            return localStorage.getItem('userName')
         }
     },
     created(){

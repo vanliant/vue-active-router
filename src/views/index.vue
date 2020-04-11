@@ -28,7 +28,7 @@ export default {
     },
     computed:{
         userName:function(){
-            return this.$store.state.userInfo.name
+            return localStorage.getItem('userName')
         }
     }
 };
