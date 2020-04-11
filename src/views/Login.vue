@@ -55,11 +55,10 @@ export default {
                 name:this.userName,
                 password:this.password
             }
-            sessionStorage.setItem('userInfo',[JSON.stringify(userInfo)])
+            localStorage.setItem('userName',this.userName)
             this.$store.commit('saveUserInfo',userInfo)
-            this.$router.push({
-                path:'/page/index',
-            })
+
+            window.location.href = "/page/index" // 重新渲染路由信息
         }
 
     }

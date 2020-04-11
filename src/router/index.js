@@ -3,71 +3,112 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const routes = [
+export const fixRoutes = [
 	{
 		path: '/login',
 		name: 'Login',
-		component: () => import('../views/Login.vue')
-	},
+		component: () => import('../views/Login.vue'),
+		meta:{
+			roles:['admin','user']
+		}
+	}
+]
+export const authRoutes = [
 	{
 		path: '/page/',
 		name: 'pageIndex',
 		component: () => import('../views/index.vue'),
+		meta:{
+			roles:['admin','user']
+		},
 		children: [
 			{
 				path: 'index',
 				component: () => import('../views/page/indexPage.vue'),
+				meta:{
+					roles:['admin','user']
+				}
 			},
 			{
 				path: 'table/',
 				component: () => import('../views/page/TablePage.vue'),
+				meta:{
+					roles:['admin','user']
+				},
 				children: [
 					{
 						path: 'editTable',
-						component: () => import('../views/page/TablePageEdit.vue')
+						component: () => import('../views/page/TablePageEdit.vue'),
+						meta:{
+							roles:['admin','user']
+						},
 					},
 					{
 						path: 'flexibleTable',
-						component: () => import('../views/page/TablePageFlexible.vue')
+						component: () => import('../views/page/TablePageFlexible.vue'),
+						meta:{
+							roles:['admin','user']
+						},
 					}
 				]
 			},
 			{
 				path: 'admin',
-				meta:{
-					auth:true
-				},
 				component: () => import('../views/page/AdminPage.vue'),
+				meta:{
+					roles:['admin']
+				},
 			},
 			{
 				path: 'drag/',
 				component: () => import('../views/page/DragPage.vue'),
+				meta:{
+					roles:['admin','user']
+				},
 				children: [
 					{
 						path: 'single',
-						component: () => import('../views/page/DragPageSingle.vue')
+						component: () => import('../views/page/DragPageSingle.vue'),
+						meta:{
+							roles:['admin','user']
+						},
 					},
 					{
 						path: 'group',
-						component: () => import('../views/page/DragPageGroup.vue')
+						component: () => import('../views/page/DragPageGroup.vue'),
+						meta:{
+							roles:['admin','user']
+						},
 					}
 				]
 			},
 			{
 				path: 'tree',
 				component: () => import('../views/page/TreePage.vue'),
+				meta:{
+					roles:['admin','user']
+				},
 			},
 			{
 				path: 'error/',
 				component: () => import('../views/page/ErrorPage.vue'),
+				meta:{
+					roles:['admin','user']
+				},
 				children: [
 					{
 						path: '404',
-						component: () => import('../views/page/ErrorPage404.vue')
+						component: () => import('../views/page/ErrorPage404.vue'),
+						meta:{
+							roles:['admin','user']
+						},
 					},
 					{
 						path: '500',
-						component: () => import('../views/page/ErrorPage500.vue')
+						component: () => import('../views/page/ErrorPage500.vue'),
+						meta:{
+							roles:['admin','user']
+						},
 					}
 				]
 			},
@@ -75,53 +116,10 @@ const routes = [
 	}
 ]
 
-
-const newRoute = routes.filter(item => {
-	// 遍历item，存在 auth为 true 的则不添加
-	return getNewRouter(item)
-})
-
-
-function getNewRouter(item){
-
-	let userName = JSON.parse(sessionStorage.getItem('userInfo'))
-	// console.log('bbbbbbbb',userName.name)
-
-	if(item.children){
-		let curArr = []
-		item.children.map((value) => {
-			if(getNewRouter(value)){
-				curArr.push(getNewRouter(value))
-			}
-		})
-		item.children = curArr
-		return item
-		
-	}else{
-		// console.log('userName',userName)
-		if(userName.name == 'admin'){
-			return item
-		}else{
-			if(!item.meta || !item.meta.auth){
-				return item
-			}
-		}
-		
-	}
-}
-
 const router = new VueRouter({
 	mode: 'history',
 	base: process.env.BASE_URL,
-	// newRoute
+	routes:fixRoutes
 })
-
-router.beforeEach((to,from,next)=>{
-	console.log(to,from,next)
-	router.addRoutes([...newRoute])
-	next()
-})
-
-
 
 export default router

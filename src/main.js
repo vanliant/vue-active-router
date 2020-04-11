@@ -18,12 +18,17 @@ import 'element-ui/lib/theme-chalk/index.css'
 // 引入全局样式
 import './assets/less/index.less'
 
+// 控制路由表的js文件
+import '@/utils/router.js'//全局
+import '@/authRoute.js'
+
 Vue.use(VueAxios,axios);
 Vue.prototype.$qs = qs
 Vue.use(VueCookies)
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+
 
 new Vue({
   router,
