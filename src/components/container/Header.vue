@@ -17,10 +17,6 @@
 
         <div class="bread">
             <el-breadcrumb class="breadItem" separator-class="el-icon-arrow-right">
-                <!-- <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-                <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                <el-breadcrumb-item>活动详情</el-breadcrumb-item>-->
                 <el-breadcrumb-item
                     v-for="(item,index) in breadcrumbList"
                     :key="index"
@@ -109,6 +105,7 @@ export default {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
+            line-height: 1.5;
         }
     }
     .userInfo {
