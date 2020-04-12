@@ -27,3 +27,16 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
+### introduction
+
+---
+
+- #### 根据权限动态设置路由
+
+- #### 根据路由动态渲染面包屑
+
+  <img src="/Users/taotao/Desktop/vue_git/vue-active-router/screenshot/breadcrumb.png" style="zoom:20%;" />
+

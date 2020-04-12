@@ -6,7 +6,7 @@
             @select="selectPage"
             background-color="#304155"
             text-color="#fff"
-            :collapse="false"
+            :collapse="isCollapse"
         >
             <el-menu-item index="/page/index">
                 <i class="el-icon-house"></i>
@@ -72,7 +72,9 @@
 <script>
 export default {
     data() {
-        return {};
+        return {
+            
+        };
     },
     methods: {
         selectPage(key,keyPath){
@@ -87,6 +89,9 @@ export default {
         },
         userName:function(){
             return localStorage.getItem('userName')
+        },
+        isCollapse:function(){
+            return this.$store.state.isCollapse
         }
     },
     created(){

@@ -1,4 +1,4 @@
-import { fixRoutes, authRoutes } from '@/router/index.js'
+import {  authRoutes } from '@/router/index.js'
 
 import router from '@/router/index.js'
 
@@ -15,7 +15,7 @@ router.beforeEach((to, from, next) => {
             // 1.根据当前登陆用户角色筛选路由
             var getRoutes = filterRouter(authRoutes, userName)
             // 2.将生成好的路由addRoutes
-            router.addRoutes(fixRoutes.concat(getRoutes))
+            router.addRoutes(getRoutes)
             // 3.重新进入beforeEach判断
             router.push({ path: to.path })
         }

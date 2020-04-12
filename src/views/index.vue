@@ -1,12 +1,12 @@
 <template>
     <div id="pageIndex">
         <el-container class="content">
-            <el-aside width="200px">
+            <el-aside :width="asideWidth" >
                 <aside-part />
             </el-aside>
             <el-container>
                 <el-header>
-                    {{userName}}
+                    <header-part />
                 </el-header>
                 <el-main>
                     <router-view></router-view>
@@ -18,17 +18,24 @@
 
 <script>
 import asidePart from "@/components/container/Aside.vue";
+import headerPart from "@/components/container/Header.vue";
 
 export default {
     components: {
-        asidePart
+        asidePart,
+        headerPart
     },
     data() {
         return {};
     },
     computed:{
-        userName:function(){
-            return localStorage.getItem('userName')
+        asideWidth:function(){
+            if(this.$store.state.isCollapse){
+                return '65px'
+            }
+            else{
+                return '200px'
+            }
         }
     }
 };
@@ -43,10 +50,10 @@ export default {
     }
 }
 .el-header {
-    background-color: #b3c0d1;
+    background-color: #fff;
     color: #333;
-    text-align: center;
     line-height: 60px;
+    padding: 0 0 0 20px;
 }
 
 .el-aside {

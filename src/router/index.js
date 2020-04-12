@@ -23,7 +23,8 @@ export const authRoutes = [
 		},
 		children: [
 			{
-				path: 'index',
+				path: 'index/',
+				name:'首页',
 				component: () => import('../views/page/indexPage.vue'),
 				meta:{
 					roles:['admin','user']
@@ -31,6 +32,7 @@ export const authRoutes = [
 			},
 			{
 				path: 'table/',
+				name:'表格案例',
 				component: () => import('../views/page/TablePage.vue'),
 				meta:{
 					roles:['admin','user']
@@ -38,6 +40,7 @@ export const authRoutes = [
 				children: [
 					{
 						path: 'editTable',
+						name:'可编辑案例',
 						component: () => import('../views/page/TablePageEdit.vue'),
 						meta:{
 							roles:['admin','user']
@@ -45,6 +48,7 @@ export const authRoutes = [
 					},
 					{
 						path: 'flexibleTable',
+						name:'自定义列表格',
 						component: () => import('../views/page/TablePageFlexible.vue'),
 						meta:{
 							roles:['admin','user']
@@ -54,6 +58,7 @@ export const authRoutes = [
 			},
 			{
 				path: 'admin',
+				name:'权限管理',
 				component: () => import('../views/page/AdminPage.vue'),
 				meta:{
 					roles:['admin']
@@ -61,6 +66,7 @@ export const authRoutes = [
 			},
 			{
 				path: 'drag/',
+				name:'拖拽案例',
 				component: () => import('../views/page/DragPage.vue'),
 				meta:{
 					roles:['admin','user']
@@ -68,6 +74,7 @@ export const authRoutes = [
 				children: [
 					{
 						path: 'single',
+						name:'单组拖拽',
 						component: () => import('../views/page/DragPageSingle.vue'),
 						meta:{
 							roles:['admin','user']
@@ -75,6 +82,7 @@ export const authRoutes = [
 					},
 					{
 						path: 'group',
+						name:'多组拖拽',
 						component: () => import('../views/page/DragPageGroup.vue'),
 						meta:{
 							roles:['admin','user']
@@ -84,6 +92,7 @@ export const authRoutes = [
 			},
 			{
 				path: 'tree',
+				name:'树案例',
 				component: () => import('../views/page/TreePage.vue'),
 				meta:{
 					roles:['admin','user']
@@ -91,6 +100,7 @@ export const authRoutes = [
 			},
 			{
 				path: 'error/',
+				name:'Error页面',
 				component: () => import('../views/page/ErrorPage.vue'),
 				meta:{
 					roles:['admin','user']
@@ -98,6 +108,7 @@ export const authRoutes = [
 				children: [
 					{
 						path: '404',
+						name:'404',
 						component: () => import('../views/page/ErrorPage404.vue'),
 						meta:{
 							roles:['admin','user']
@@ -105,6 +116,7 @@ export const authRoutes = [
 					},
 					{
 						path: '500',
+						name:'500',
 						component: () => import('../views/page/ErrorPage500.vue'),
 						meta:{
 							roles:['admin','user']
