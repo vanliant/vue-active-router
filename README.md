@@ -38,5 +38,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 - #### 根据路由动态渲染面包屑
 
-  <img src="/Users/taotao/Desktop/vue_git/vue-active-router/screenshot/breadcrumb.png" style="zoom:20%;" />
+  <img src="./screenshot/breadcrumb.png" style="zoom:20%;" />
 
