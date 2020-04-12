@@ -64,8 +64,7 @@ export default {
 }
 
 .el-main {
-    background-color: #e9eef3;
+    background-color: #f6f7f9;
     color: #333;
-    line-height: 160px;
 }
 </style>
