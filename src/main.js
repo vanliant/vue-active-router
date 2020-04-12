@@ -15,6 +15,9 @@ import VueCookies from 'vue-cookies'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
+
 // 引入全局样式
 import './assets/less/index.less'
 

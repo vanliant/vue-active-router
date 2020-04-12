@@ -27,7 +27,7 @@
         <div class="userInfo">
             <div class="avatar">
                 <!-- <el-avatar class="headPic" :size="30" src="../../assets/img/avatar.png"></el-avatar> -->
-                <img src="../../assets/img/avatar.png" width="30px" height="30px" />
+                <img src="../../assets/img/pang.png" width="30px" height="30px" />
             </div>
             <div class="userName">
                 <span>{{userName}}</span>

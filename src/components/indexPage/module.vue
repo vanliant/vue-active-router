@@ -1,146 +1,137 @@
 <template>
-        <el-row :gutter="20">
-                <el-col :span="6">
-                    <div class="grid-content bg-white">
-                        <div class="module-head">
-                            <div class="module-head-name">
-                                <span>{{visitedModule.name}}</span>
-                            </div>
-                            <div class="module-head-tag">
-                                <el-tag size="small" type="success">日</el-tag>
-                            </div>
+    <el-row :gutter="20">
+        <el-col :span="6">
+            <div class="grid-content bg-white">
+                <div class="module-head">
+                    <div class="module-head-name">
+                        <span>{{visitedModule.name}}</span>
+                    </div>
+                    <div class="module-head-tag">
+                        <el-tag size="small" type="success">日</el-tag>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <div class="module-body-stastic">
+                        <span>{{visitedModule.stastic}}</span>
+                    </div>
+                    <div class="module-body-content">
+                        <span>{{visitedModule.up}}</span>
+                        <i class="el-icon-caret-top" style="font-size:14px;color:#ed4014"></i>
+                        <br />
+                        <span>{{visitedModule.down}}</span>
+                        <i class="el-icon-caret-bottom" style="font-size:14px;color:#1bbe6a"></i>
+                    </div>
+                    <div class="module-body-foot">
+                        <div class="module-body-foot-name">总访问量</div>
+                        <div class="module-body-foot-num">{{visitedModule.num}}</div>
+                    </div>
+                </div>
+            </div>
+        </el-col>
+
+        <el-col :span="6">
+            <div class="grid-content bg-white">
+                <div class="module-head">
+                    <div class="module-head-name">
+                        <span>{{saleModule.name}}</span>
+                    </div>
+                    <div class="module-head-tag">
+                        <el-tag size="small">月</el-tag>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <div class="module-body-stastic">
+                        <span>{{saleModule.stastic}}</span>
+                    </div>
+                    <div class="module-body-content">
+                        <el-progress
+                            class="maProgress"
+                            :text-inside="true"
+                            :stroke-width="14"
+                            :percentage="60"
+                        ></el-progress>
+                    </div>
+                    <div class="module-body-foot">
+                        <div class="module-body-foot-name">总销售额</div>
+                        <div class="module-body-foot-num">{{saleModule.num}}</div>
+                    </div>
+                </div>
+            </div>
+        </el-col>
+
+        <el-col :span="6">
+            <div class="grid-content bg-white">
+                <div class="module-head">
+                    <div class="module-head-name">
+                        <span>{{orderModule.name}}</span>
+                    </div>
+                    <div class="module-head-tag">
+                        <el-tag size="small" type="danger">周</el-tag>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <div class="module-body-stastic">
+                        <span>{{orderModule.stastic}}</span>
+                    </div>
+                    <div class="module-body-content">
+                        <module-chart :chartData='orderModuleChartData' />
+                    </div>
+                    <div class="module-body-foot">
+                        <div class="module-body-foot-name">转化率</div>
+                        <div class="module-body-foot-num">{{orderModule.num}}</div>
+                    </div>
+                </div>
+            </div>
+        </el-col>
+
+        <el-col :span="6">
+            <div class="grid-content bg-white">
+                <div class="module-head">
+                    <div class="module-head-name">
+                        <span>{{userModule.name}}</span>
+                    </div>
+                    <div class="module-head-tag">
+                        <el-tooltip class="item" effect="dark" content="指示说明" placement="top">
+                            <i
+                                class="el-icon-question"
+                                style="color:#acb0ba;vertical-align:middle;"
+                            ></i>
+                        </el-tooltip>
+                    </div>
+                </div>
+                <div class="module-body">
+                    <div class="module-body-stastic">
+                        <span>{{userModule.stastic}}</span>
+                    </div>
+                    <div class="module-body-content">
+                        <div class="module-body-content-img">
+                            <img
+                                v-for="(item,index) in 7"
+                                :key="index"
+                                src="../../assets/img/avatar.png"
+                            />
                         </div>
-                        <div class="module-body">
-                            <div class="module-body-stastic">
-                                <span>{{visitedModule.stastic}}</span>
-                            </div>
-                            <div class="module-body-content">
-                                <span>{{visitedModule.up}}</span>
-                                <i class="el-icon-caret-top" style="font-size:14px;color:#ed4014"></i>
-                                <br />
-                                <span>{{visitedModule.down}}</span>
-                                <i
-                                    class="el-icon-caret-bottom"
-                                    style="font-size:14px;color:#1bbe6a"
-                                ></i>
-                            </div>
-                            <div class="module-body-foot">
-                                <div class="module-body-foot-name">总访问量</div>
-                                <div class="module-body-foot-num">{{visitedModule.num}}</div>
-                            </div>
+                        <div class="imgTag">
+                            <div>+3</div>
                         </div>
                     </div>
-                </el-col>
-
-                <el-col :span="6">
-                    <div class="grid-content bg-white">
-                        <div class="module-head">
-                            <div class="module-head-name">
-                                <span>{{saleModule.name}}</span>
-                            </div>
-                            <div class="module-head-tag">
-                                <el-tag size="small">月</el-tag>
-                            </div>
-                        </div>
-                        <div class="module-body">
-                            <div class="module-body-stastic">
-                                <span>{{saleModule.stastic}}</span>
-                            </div>
-                            <div class="module-body-content">
-                                <el-progress
-                                    class="maProgress"
-                                    :text-inside="true"
-                                    :stroke-width="14"
-                                    :percentage="60"
-                                ></el-progress>
-                            </div>
-                            <div class="module-body-foot">
-                                <div class="module-body-foot-name">总销售额</div>
-                                <div class="module-body-foot-num">{{saleModule.num}}</div>
-                            </div>
-                        </div>
+                    <div class="module-body-foot">
+                        <div class="module-body-foot-name">总用户</div>
+                        <div class="module-body-foot-num">{{userModule.num}}</div>
                     </div>
-                </el-col>
-
-                <el-col :span="6">
-                    <div class="grid-content bg-white">
-                        <div class="module-head">
-                            <div class="module-head-name">
-                                <span>{{orderModule.name}}</span>
-                            </div>
-                            <div class="module-head-tag">
-                                <el-tag size="small" type="danger">周</el-tag>
-                            </div>
-                        </div>
-                        <div class="module-body">
-                            <div class="module-body-stastic">
-                                <span>{{orderModule.stastic}}</span>
-                            </div>
-                            <div class="module-body-content">
-                                <!-- <span>{{visitedModule.up}}</span>
-                                <i class="el-icon-caret-top" style="font-size:14px;color:#ed4014"></i>
-                                <br>
-                                <span>{{visitedModule.down}}</span>
-                                <i class="el-icon-caret-bottom" style="font-size:14px;color:#1bbe6a"></i>-->
-                            </div>
-                            <div class="module-body-foot">
-                                <div class="module-body-foot-name">转化率</div>
-                                <div class="module-body-foot-num">{{orderModule.num}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </el-col>
-
-                <el-col :span="6">
-                    <div class="grid-content bg-white">
-                        <div class="module-head">
-                            <div class="module-head-name">
-                                <span>{{userModule.name}}</span>
-                            </div>
-                            <div class="module-head-tag">
-                                <el-tooltip
-                                    class="item"
-                                    effect="dark"
-                                    content="指示说明"
-                                    placement="top"
-                                >
-                                    <i
-                                        class="el-icon-question"
-                                        style="color:#acb0ba;vertical-align:middle;"
-                                    ></i>
-                                </el-tooltip>
-                            </div>
-                        </div>
-                        <div class="module-body">
-                            <div class="module-body-stastic">
-                                <span>{{userModule.stastic}}</span>
-                            </div>
-                            <div class="module-body-content">
-                                <div class="module-body-content-img">
-                                    <img
-                                        v-for="(item,index) in 7"
-                                        :key="index"
-                                        src="../../assets/img/avatar.png"
-                                    />
-                                </div>
-                                <div class="imgTag">
-                                    <div>+3</div>
-                                </div>
-                            </div>
-                            <div class="module-body-foot">
-                                <div class="module-body-foot-name">总用户</div>
-                                <div class="module-body-foot-num">{{userModule.num}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </el-col>
-            </el-row>
-
+                </div>
+            </div>
+        </el-col>
+    </el-row>
 </template>
 
 <script>
+import moduleChart from "@/components/indexPage/moduleChart.vue";
 export default {
-    data(){
+    components: {
+        moduleChart
+    },
+    data() {
         return {
             visitedModule: {
                 name: "访问量",
@@ -163,10 +154,14 @@ export default {
                 name: "新增用户",
                 stastic: "128位",
                 num: "10800 万"
+            },
+
+            orderModuleChartData: {
+                expectedData: [10, 300, 150, 450, 70, 210, 165]
             }
-        }
+        };
     }
-}
+};
 </script>
 
 <style lang="less" scoped>
@@ -240,9 +235,9 @@ export default {
             color: #f56a00;
             background-color: #fde3cf;
             position: relative;
-            div{
+            div {
                 font-size: 14px;
-                .center()
+                .center();
             }
         }
     }
