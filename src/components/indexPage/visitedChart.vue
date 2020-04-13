@@ -1,5 +1,5 @@
 <template>
-    <div class="moduleChart" :style="{height:'100%',width:'100%'}" />
+    <div :class="chartClass" :style="{height:'100%',width:'100%'}" />
 </template>
 
 <script>
@@ -7,15 +7,19 @@ import echarts from "echarts";
 require("echarts/theme/macarons"); // echarts theme
 
 export default {
-    props:{
-        chartData:{
-            type:Object,
-            default:()=>{}
+    props: {
+        chartData: {
+            type: Array,
+            default: () => []
+        },
+        chartClass: {
+            type: String,
+            default: "curChart"
         }
     },
     data() {
         return {
-            chart: null,
+            chart: null
         };
     },
     watch: {
@@ -43,12 +47,25 @@ export default {
             this.chart = echarts.init(this.$el, "macarons");
             this.setOptions(this.chartData);
         },
-        setOptions({ expectedData } = {}) {
+        setOptions(val) {
             this.chart.setOption({
                 xAxis: {
-                    show:false,
-                    data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-                    boundaryGap: false,
+                    show: true,
+                    data: [
+                        "1月",
+                        "2月",
+                        "3月",
+                        "4月",
+                        "5月",
+                        "6月",
+                        "7月",
+                        "8月",
+                        "9月",
+                        "10月",
+                        "11月",
+                        "12月"
+                    ],
+                    boundaryGap: ["5%", "5%"], //留白大小，坐标轴两边留白
                     axisTick: {
                         show: false
                     }
@@ -57,28 +74,40 @@ export default {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    top: 0,
-                    containLabel: false
+                    top: 20,
+                    containLabel: true
                 },
                 tooltip: {
                     trigger: "axis",
                     axisPointer: {
                         type: "cross"
-                    },
+                    }
                     // padding: [5, 10]
                 },
                 yAxis: {
-                    show:false,
+                    show: true,
                     axisTick: {
                         show: false
                     }
                 },
                 series: [
                     {
-                        name: "订单量",
+                        name: "访问量",
+                        barWidth: 30, //柱图宽度
                         itemStyle: {
                             normal: {
-                                color: "#00cc65",
+                                barBorderRadius: 7,
+                                color: new echarts.graphic.LinearGradient(
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    [
+                                        { offset: 0, color: "#67ccff" }, //柱图渐变色
+                                        { offset: 0.5, color: "#3ab0f6" }, //柱图渐变色
+                                        { offset: 1, color: "#1595ec" } //柱图渐变色
+                                    ]
+                                ),
                                 lineStyle: {
                                     color: "#00cc65",
                                     width: 2
@@ -90,9 +119,9 @@ export default {
                             }
                         },
                         smooth: true,
-                        type: "line",
-                        data: expectedData,
-                        animationDuration: 0,
+                        type: "bar",
+                        data: val,
+                        animationDuration: 2000,
                         animationEasing: "cubicInOut"
                     }
                 ]

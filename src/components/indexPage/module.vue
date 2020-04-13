@@ -106,9 +106,9 @@
                     <div class="module-body-content">
                         <div class="module-body-content-img">
                             <img
-                                v-for="(item,index) in 7"
+                                v-for="(item,index) in imgList"
                                 :key="index"
-                                src="../../assets/img/avatar.png"
+                                :src="item.pic"
                             />
                         </div>
                         <div class="imgTag">
@@ -158,7 +158,17 @@ export default {
 
             orderModuleChartData: {
                 expectedData: [10, 300, 150, 450, 70, 210, 165]
-            }
+            },
+
+            imgList:[
+                {pic:require('../../assets/img/avatar.png')},
+                {pic:require('../../assets/img/bling1.png')},
+                {pic:require('../../assets/img/bling2.png')},
+                {pic:require('../../assets/img/bling3.png')},
+                {pic:require('../../assets/img/bling4.png')},
+                {pic:require('../../assets/img/bling5.png')},
+                {pic:require('../../assets/img/bling6.png')},
+            ]
         };
     }
 };
@@ -220,6 +230,7 @@ export default {
             img {
                 border-radius: 50%;
                 width: 25px;
+                height: 25px;
                 &:not(:first-child) {
                     margin-left: -10px;
                 }
