@@ -24,7 +24,7 @@ import './assets/less/index.less'
 // 动态设置路由
 import '@/authRoute.js'
 
-Vue.use(VueAxios,axios);
+Vue.use(VueAxios, axios);
 Vue.prototype.$qs = qs
 Vue.use(VueCookies)
 Vue.use(ElementUI)

@@ -294,15 +294,14 @@ export default {
         }
     }
 }
-.block-img{
+.block-img {
     height: 210px;
-    div{
+    div {
         height: 100%;
-    background-image: url(../../assets/img/user-preference.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50%;
+        background-image: url(../../assets/img/user-preference.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50%;
     }
-    
 }
 </style>

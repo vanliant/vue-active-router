@@ -74,7 +74,7 @@
                         <span>{{orderModule.stastic}}</span>
                     </div>
                     <div class="module-body-content">
-                        <module-chart :chartData='orderModuleChartData' />
+                        <module-chart :chartData="orderModuleChartData" />
                     </div>
                     <div class="module-body-foot">
                         <div class="module-body-foot-name">转化率</div>
@@ -105,11 +105,7 @@
                     </div>
                     <div class="module-body-content">
                         <div class="module-body-content-img">
-                            <img
-                                v-for="(item,index) in imgList"
-                                :key="index"
-                                :src="item.pic"
-                            />
+                            <img v-for="(item,index) in imgList" :key="index" :src="item.pic" />
                         </div>
                         <div class="imgTag">
                             <div>+3</div>
@@ -160,14 +156,14 @@ export default {
                 expectedData: [10, 300, 150, 450, 70, 210, 165]
             },
 
-            imgList:[
-                {pic:require('../../assets/img/avatar.png')},
-                {pic:require('../../assets/img/bling1.png')},
-                {pic:require('../../assets/img/bling2.png')},
-                {pic:require('../../assets/img/bling3.png')},
-                {pic:require('../../assets/img/bling4.png')},
-                {pic:require('../../assets/img/bling5.png')},
-                {pic:require('../../assets/img/bling6.png')},
+            imgList: [
+                { pic: require("../../assets/img/avatar.png") },
+                { pic: require("../../assets/img/bling1.png") },
+                { pic: require("../../assets/img/bling2.png") },
+                { pic: require("../../assets/img/bling3.png") },
+                { pic: require("../../assets/img/bling4.png") },
+                { pic: require("../../assets/img/bling5.png") },
+                { pic: require("../../assets/img/bling6.png") }
             ]
         };
     }

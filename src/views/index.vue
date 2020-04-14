@@ -1,7 +1,7 @@
 <template>
     <div id="pageIndex">
         <el-container class="content">
-            <el-aside :width="asideWidth" >
+            <el-aside :width="asideWidth">
                 <aside-part />
             </el-aside>
             <el-container>
@@ -28,13 +28,12 @@ export default {
     data() {
         return {};
     },
-    computed:{
-        asideWidth:function(){
-            if(this.$store.state.isCollapse){
-                return '65px'
-            }
-            else{
-                return '200px'
+    computed: {
+        asideWidth: function() {
+            if (this.$store.state.isCollapse) {
+                return "65px";
+            } else {
+                return "200px";
             }
         }
     }
