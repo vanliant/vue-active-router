@@ -46,6 +46,9 @@ export default {
         initChart() {
             this.chart = echarts.init(this.$el, "macarons");
             this.setOptions(this.chartData);
+            window.addEventListener("resize",  () => {
+                this.chart.resize();
+            });
         },
         setOptions(val) {
             this.chart.setOption({

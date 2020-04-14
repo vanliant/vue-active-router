@@ -1,5 +1,5 @@
 <template>
-    <div class="className" :style="{height:'100%',width:'100%'}" />
+    <div :class="chartClass" :style="{height:'100%',width:'100%'}" />
 </template>
 
 <script>
@@ -7,13 +7,23 @@ import echarts from "echarts";
 require("echarts/theme/macarons"); // echarts theme
 
 export default {
+    props:{
+        chartData:{
+            type:Array,
+            default:()=>[]
+        },
+        chartClass:{
+            type:String,
+            default:'demoChart'
+        },
+        title:{
+            type:String,
+            default:'title'
+        },
+    },
     data() {
         return {
             chart: null,
-            chartData:{
-    expectedData: [100, 120, 161, 134, 105, 160, 165],
-    actualData: [120, 82, 91, 154, 162, 140, 145]
-  },
         };
     },
     watch: {
@@ -44,74 +54,57 @@ export default {
                 this.chart.resize();
             });
         },
-        setOptions({ expectedData, actualData } = {}) {
+        setOptions(val) {
             this.chart.setOption({
                 xAxis: {
-                    data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                    show:false,
+                    data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
                     boundaryGap: false,
                     axisTick: {
                         show: false
                     }
                 },
                 grid: {
-                    left: 10,
-                    right: 10,
-                    bottom: 20,
-                    top: 30,
-                    containLabel: true
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    top: 0,
+                    containLabel: false
                 },
                 tooltip: {
                     trigger: "axis",
                     axisPointer: {
                         type: "cross"
                     },
-                    padding: [5, 10]
+                    // padding: [5, 10]
                 },
                 yAxis: {
+                    show:false,
                     axisTick: {
                         show: false
                     }
                 },
-                legend: {
-                    data: ["expected", "actual"]
-                },
                 series: [
                     {
-                        name: "expected",
+                        name: this.title,
                         itemStyle: {
                             normal: {
-                                color: "#FF005A",
+                                color: "#00cc65",
                                 lineStyle: {
-                                    color: "#FF005A",
-                                    width: 2
-                                }
-                            }
-                        },
-                        smooth: true,
-                        type: "line",
-                        data: expectedData,
-                        animationDuration: 2800,
-                        animationEasing: "cubicInOut"
-                    },
-                    {
-                        name: "actual",
-                        smooth: true,
-                        type: "line",
-                        itemStyle: {
-                            normal: {
-                                color: "#3888fa",
-                                lineStyle: {
-                                    color: "#3888fa",
+                                    color: "#00cc65",
                                     width: 2
                                 },
+
                                 areaStyle: {
-                                    color: "#f3f8ff"
+                                    color: "#c5f1d2"
                                 }
                             }
                         },
-                        data: actualData,
-                        animationDuration: 2800,
-                        animationEasing: "quadraticOut"
+                        smooth: true,
+                        type: "line",
+                        data: val,
+                        animationDuration: 2000,
+                        animationEasing: "cubicInOut"
                     }
                 ]
             });
