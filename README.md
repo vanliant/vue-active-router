@@ -34,6 +34,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ---
 
+- #### `vue` `vue-axios` `vue-router` `vuex` `echarts` `element-ui` `mockjs` 
+
 - #### 根据权限动态设置路由
 
 - #### 根据路由动态渲染面包屑
