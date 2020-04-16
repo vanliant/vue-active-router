@@ -1,9 +1,9 @@
 const Mock = require('mockjs')
 
 let routerData = Mock.mock(
-
+    'router'
 )
 
-Mock.mock(/routerInfo/, 'post', (res) => {
+Mock.mock(/routerInfos/, 'post', (res) => {
     return routerData[res.body]
 })
