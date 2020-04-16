@@ -16,11 +16,11 @@ for(let i=0;i<10;i++){
     data.push(obj)
 }
 
-let editableData = Mock.mock({
+let tableData = Mock.mock({
     // 属性 list 的值是一个数组，其中含有 10 个元素
     data
 })
 // 拦截ajax请求，配置mock的数据
 Mock.mock(/\/tablePage\/editTable/, 'post', ()=>{
-    return editableData
+    return tableData
 })
