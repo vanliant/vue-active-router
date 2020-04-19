@@ -95,7 +95,7 @@ export const authRoutes = [
 				name:'树案例',
 				component: () => import('../views/page/TreePage.vue'),
 				meta:{
-					roles:['admin','user']
+					roles:[]
 				},
 			},
 			{
@@ -125,7 +125,12 @@ export const authRoutes = [
 				]
 			},
 		]
-	}
+	},
+	{
+		path: '*',
+		name: 'error',
+		redirect:{name:"404"}
+	},
 ]
 
 const router = new VueRouter({

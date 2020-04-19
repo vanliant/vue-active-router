@@ -6,6 +6,7 @@ import store from './store'
 // 引入mock文件
 import './mock/routerMock'
 import './mock/tableMock'
+import './mock/treeMock'
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'

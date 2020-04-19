@@ -47,10 +47,10 @@
                     <span slot="title">多组拖拽</span>
                 </el-menu-item>
             </el-submenu>
-            <el-menu-item index="/page/tree">
+            <!-- <el-menu-item index="/page/tree">
                 <i class="el-icon-folder-opened"></i>
                 <span slot="title">树案例</span>
-            </el-menu-item>
+            </el-menu-item> -->
             <el-submenu index="/page/error">
                 <template slot="title">
                     <i class="el-icon-menu"></i>
