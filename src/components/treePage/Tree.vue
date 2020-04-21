@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!-- <el-tree :data="data" :props="defaultProps" accordion @node-click="handleNodeClick"></el-tree> -->
         <div v-for="(item,index) in rootData" :key="index">
             <el-tree :data="item" :props="defaultProps" accordion @node-click="handleNodeClick" @node-expand='(obj,node,componnet) => showChedckNode(obj,node,componnet,index)'></el-tree>
         </div>
@@ -98,7 +97,6 @@ export default {
         showChedckNode(obj,node,componnet,index){
             console.log('ss',obj,node,componnet,index)
             if(node.level == 1){
-                // 点击的为第一层子节点，通过id去获取数据
                 this.getDetailData(obj.id,index)
             }
         }
